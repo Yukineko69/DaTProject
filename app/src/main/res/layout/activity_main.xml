@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.MainActivity"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgound_actionbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:titleTextColor="@android:color/white">
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgound_actionbar"
+        android:minHeight="?actionBarSize"
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabIndicatorHeight="2dp"
+        app:tabInlineLabel="true"
+        app:tabRippleColor="@null"
+        app:tabTextColor="#FFFFFF" />
+
+    <com.example.datproject.main.CustomViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</LinearLayout>

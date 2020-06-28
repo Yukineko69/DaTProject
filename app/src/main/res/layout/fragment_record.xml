@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgound_record">
+
+    <Button
+        android:id="@+id/btn_record"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="50dp"
+        android:drawableTop="@drawable/manual_record"
+        android:background="@drawable/round_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_pause"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:drawableTop="@drawable/ic_pause_record"
+        android:background="@drawable/round_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_record"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_record"
+        app:layout_constraintTop_toTopOf="@+id/btn_record"/>
+
+    <TextView
+        android:id="@+id/lbl_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Tên bản ghi..."
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lbl_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="00:00:00"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_record"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.datproject.record.VisualizerView
+        android:id="@+id/visualizer_View"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/lbl_timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lbl_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:text="00:00"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_name" />
+
+    <TextView
+        android:id="@+id/lbl_Timer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="00:00"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/lbl_now"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_name" />
+
+    <TextView
+        android:id="@+id/lbl_suggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chạm vào nút ghi âm để bắt đầu bản ghi âm"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_record"
+        app:layout_constraintEnd_toEndOf="@+id/visualizer_View"
+        app:layout_constraintStart_toStartOf="@+id/visualizer_View"
+        app:layout_constraintTop_toTopOf="@+id/lbl_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
