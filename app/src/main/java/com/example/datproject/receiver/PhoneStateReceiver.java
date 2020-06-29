@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
+import com.example.datproject.record.RecordFragment;
 
 import com.example.datproject.R;
 
@@ -16,6 +17,8 @@ public class PhoneStateReceiver extends BroadcastReceiver {
     private static boolean isIncomingCall = true;
 
     private static String telephoneNumber;
+
+    private RecordFragment rec = new RecordFragment();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -53,6 +56,7 @@ public class PhoneStateReceiver extends BroadcastReceiver {
             if (previousState == currentState) {
                 return;
             }
+
 
             switch (currentState) {
                 case TelephonyManager.CALL_STATE_IDLE:
@@ -98,6 +102,7 @@ public class PhoneStateReceiver extends BroadcastReceiver {
 
     private void onIncomingCallStarted(Context context, String telephoneNumber) {
         Toast.makeText(context, "onIncomingCallStarted from " + telephoneNumber, Toast.LENGTH_SHORT).show();
+        rec.onClickRecord();
     }
 
     private void onOutgoingCallEnded(Context context, String telephoneNumber) {
@@ -106,6 +111,7 @@ public class PhoneStateReceiver extends BroadcastReceiver {
 
     private void onIncomingCallEnded(Context context, String telephoneNumber) {
         Toast.makeText(context, "onIncomingCallEnded from " + telephoneNumber, Toast.LENGTH_SHORT).show();
+        rec.onClickRecord();
     }
 
     private void onMissedCall(Context context, String telephoneNumber) {

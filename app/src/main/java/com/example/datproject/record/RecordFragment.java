@@ -105,7 +105,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*Set enable của tablayout
      */
-    private void setEnableTabLayout(final boolean en) {
+    public void setEnableTabLayout(final boolean en) {
         List<View> touch = MainActivity.binding.tabLayout.getTouchables();
         for (View v : touch) {
             v.setOnTouchListener(new View.OnTouchListener() {
@@ -119,7 +119,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     }
     /*Hiển thị các thay đổi hình ảnh khi click vào button Record
      */
-    private void setViewRecord() {
+    public void setViewRecord() {
         if (!statusRecord) {
             binding.btnRecord.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.manual_record), null, null);
             binding.btnPause.setVisibility(View.INVISIBLE);
@@ -147,7 +147,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*Hiển thị các thay đổi hình ảnh khi click vào button Pause
      */
-    private void setViewPause() {
+    public void setViewPause() {
         if (!statusPause)
             binding.btnPause.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_pause_record), null, null);
         else
@@ -169,7 +169,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*check xem device có bộ nhớ ngoài và có để ghi không
      */
-    private boolean ExternalStorageReady() {
+    public boolean ExternalStorageReady() {
         if (ExternalStorageUtils.isExternalStorageReadOnly() || !ExternalStorageUtils.isExternalStorageAvailable() )
             return false;
         return true;
@@ -178,7 +178,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*Các hành động để start record
      */
-    private void onClickRecord() {
+    public void onClickRecord() {
         if(checkPermission()) {
             if (ExternalStorageReady()) {
                 int numberRecord = MainActivity.database.recordAudioDao().getMaxId() + 1;
@@ -216,7 +216,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*Các hành động để dừng record và lưu lại
      */
-    private void onClickStopRecord() {
+    public void onClickStopRecord() {
         statusRecord = false;
         statusPause = false;
         visualize.stopVisualize();
@@ -237,7 +237,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*Các hành động để tạm dừng record
      */
-    private void onClickPause() {
+    public void onClickPause() {
         statusPause = true;
         visualize.pauseVisualize();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -253,7 +253,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     /*Các hành động để tiếp tục record
      */
-    private void onClickResume() {
+    public void onClickResume() {
         statusPause = false;
         visualize.startVisualize();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

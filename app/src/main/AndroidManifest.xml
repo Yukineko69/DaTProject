@@ -25,7 +25,14 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".receiver.PhoneStateReceiver">
+<!--        <receiver android:name=".receiver.PhoneStateReceiver">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />-->
+<!--                <action android:name="android.intent.action.PHONE_STATE" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <receiver android:name=".receiver.CallReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
                 <action android:name="android.intent.action.PHONE_STATE" />
@@ -34,6 +41,7 @@
 
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
