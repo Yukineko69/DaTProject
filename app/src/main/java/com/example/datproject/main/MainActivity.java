@@ -38,19 +38,11 @@ public class MainActivity extends AppCompatActivity  {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    Manifest.permission.READ_PHONE_STATE)) {
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
-            } else {
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
-            }
-        } else {
-            // do nothing
-        }
+        // Check Permissions
+        //==========================================================================================
+        checkPermission(Manifest.permission.READ_PHONE_STATE, 1);
+        checkPermission(Manifest.permission.CAPTURE_AUDIO_OUTPUT, 1);
+        //==========================================================================================
 
         initDatabase();
         // Sets the Toolbar to act as the ActionBar for this Activity window.
@@ -90,6 +82,22 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    public void checkPermission(String permission, int requestCode) {
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                    permission)) {
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{permission}, requestCode);
+            } else {
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{permission}, requestCode);
+            }
+        } else {
+            // do nothing
+        }
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -97,11 +105,19 @@ public class MainActivity extends AppCompatActivity  {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ContextCompat.checkSelfPermission(MainActivity.this,
                             Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, "Permission granted!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "READ_PHONE_STATE granted!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "READ_PHONE_STATE denied!", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(this, "Failed to grant permission!", Toast.LENGTH_SHORT).show();
+
+                    if (ContextCompat.checkSelfPermission(MainActivity.this,
+                            Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(this, "CAPTURE_AUDIO_OUTPUT granted!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "CAPTURE_AUDIO_OUTPUT denied!", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
                 return;
             }
         }
