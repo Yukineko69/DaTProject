@@ -1,3 +1,3 @@
 # DaTProject
 
-Microphone recorder + auto phone call recorder
+Android app: microphone recorder + auto phone call recorder
